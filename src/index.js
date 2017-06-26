@@ -1,14 +1,32 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
+import { AppContainer } from 'react-hot-loader'
 
-export default class App extends React.Component {
+if (module.hot) module.hot.accept();
 
-  render() {
-    return (<div>MyComponent</div>);
-  }
-}
+// this is to inject the app div to the dom
+var el = document.createElement('div');
+el.id = 'root';
+document.body.insertBefore(el, document.body.childNodes[0]);
 
+// and react will render the whole stuff into the div
 ReactDOM.render(
-  <App />,
-  document.getElementById('app')
+  <AppContainer>
+    <App/>
+  </AppContainer>,
+  document.getElementById('root')
 );
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+    ReactDOM.render(
+      <AppContainer>
+        <NextApp/>
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  });
+}
