@@ -22,14 +22,16 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: "file-loader" }
     ]
   },
   devtool: "eval",
   devServer: {
-    hot: true, // Tell the dev-server we're using HMR
+    hot: true,
     contentBase: path.join("./dist"),
     compress: true,
+    historyApiFallback: true,
     port: 9000
   }
 };

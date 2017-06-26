@@ -10,10 +10,11 @@ module.exports = {
       './src/index.js'
     ],
     vendor: [
-      'preact',
-      'preact-compat',
+      'react',
+      'react-dom',
       'react-jss',
-      'classnames'
+      'classnames',
+      'react-router'
     ]
   },
   output: {
@@ -29,8 +30,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack 3',
     }),
-    new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -42,14 +43,9 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: "file-loader" }
     ]
-  },
-  "resolve": {
-    "alias": {
-      "react": "preact-compat",
-      "react-dom": "preact-compat"
-    }
   },
   devtool: "cheap-module-source-map"
 };
