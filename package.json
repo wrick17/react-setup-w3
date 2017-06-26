@@ -1,0 +1,31 @@
+{
+  "name": "hack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-template": "^6.0.1",
+    "serve": "^6.0.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config config/webpack.config.js --optimize-minimize",
+    "serve": "webpack --config config/webpack.config.js --progress --watch",
+    "start": "webpack-dev-server --open --config config/webpack.config.js"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
