@@ -30,6 +30,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack 3',
     }),
+    new HtmlWebpackPlugin({
+      title: 'Webpack 3',
+      filename: '200.html'
+    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.DefinePlugin({
