@@ -3,11 +3,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   entry: {
     app: [
-      './src/index.js'
+      './src/index.prod.js'
     ],
     vendor: [
       'react',
@@ -41,9 +42,10 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new UglifyJSPlugin({
-      sourceMap: true
-    })
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new UglifyJSPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
+    new CompressionPlugin()
   ],
   module: {
     loaders: [
