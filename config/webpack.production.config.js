@@ -15,7 +15,8 @@ module.exports = {
       'react-dom',
       'react-jss',
       'classnames',
-      'react-router'
+      'react-router',
+      'react-helmet'
     ]
   },
   output: {
@@ -29,10 +30,10 @@ module.exports = {
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Webpack 3',
+      title: 'Loading',
     }),
     new HtmlWebpackPlugin({
-      title: 'Webpack 3',
+      title: 'Loading',
       filename: '200.html'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
