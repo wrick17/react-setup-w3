@@ -15,7 +15,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Loading',
+      title: 'Welcome',
+      template: './src/index.ejs',
+      appMountId: 'root'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR

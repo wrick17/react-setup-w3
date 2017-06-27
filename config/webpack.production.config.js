@@ -30,10 +30,14 @@ module.exports = {
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Loading',
+      title: 'Welcome',
+      template: './src/index.ejs',
+      appMountId: 'root'
     }),
     new HtmlWebpackPlugin({
-      title: 'Loading',
+      title: 'Welcome',
+      template: './src/index.ejs',
+      appMountId: 'root',
       filename: '200.html'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),

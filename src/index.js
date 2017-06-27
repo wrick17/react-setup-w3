@@ -3,11 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { AppContainer } from 'react-hot-loader';
 
-// this is to inject the app div to the dom
-var el = document.createElement('div');
-el.id = 'root';
-document.body.insertBefore(el, document.body.childNodes[0]);
-
 if (module.hot) module.hot.accept();
 
 // and react will render the whole stuff into the div with hot module stuff

@@ -10,10 +10,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Helmet>
-          <meta name="viewport" content="width=device-width" />
-          <title>Welcome</title>
-        </Helmet>
         {routes}
       </div>
     );
