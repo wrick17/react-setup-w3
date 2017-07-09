@@ -25,6 +25,13 @@ module.exports = {
       'superagent'
     ]
   },
+  resolve: {
+    alias: {
+      images: path.resolve('./assets/images'),
+      fonts: path.resolve('./assets/fonts'),
+      constants: path.resolve('./assets/constants/constants.js')
+    }
+  },
   output: {
     filename: '[name].[hash].js',
     path: path.resolve('./dist'),

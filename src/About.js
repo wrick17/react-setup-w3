@@ -1,5 +1,5 @@
 import React from 'react';
-const appleImage = require('../assets/apple.jpg');
+const appleImage = require('images/apple.jpg');
 import { Link } from 'react-router';
 
 import injectSheet from 'react-jss';

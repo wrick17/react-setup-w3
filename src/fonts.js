@@ -1,6 +1,6 @@
 import jss from 'jss'
 import preset from 'jss-preset-default'
-import {cssConstants} from './common/cssConstants';
+import { colors, variables } from 'constants'
 
 jss.setup(preset());
 
@@ -9,19 +9,19 @@ const sheet = jss.createStyleSheet({
     '@font-face': [
       {
         fontFamily: 'Proxima',
-        src: 'url("'+require("../assets/fonts/ProximaNova-Regular.ttf")+'")',
+        src: 'url("'+require("fonts/ProximaNova-Regular.ttf")+'")',
         fontWeight: 'normal',
         fontStyle: 'normal'
       },
       {
         fontFamily: 'Proxima',
-        src: 'url("'+require("../assets/fonts/ProximaNova-Bold.ttf")+'")',
+        src: 'url("'+require("fonts/ProximaNova-Bold.ttf")+'")',
         fontWeight: 'bold',
         fontStyle: 'normal'
       },
       {
         fontFamily: 'Proxima',
-        src: 'url("'+require("../assets/fonts/ProximaNova-Semibold.ttf")+'")',
+        src: 'url("'+require("fonts/ProximaNova-Semibold.ttf")+'")',
         fontWeight: 'lighter',
         fontStyle: 'normal'
       }
@@ -33,7 +33,8 @@ const sheet = jss.createStyleSheet({
     body: {
       margin: '0',
       fontFamily: 'Proxima',
-      fontWeight: 'normal'
+      fontWeight: 'normal',
+      background: colors.background
     }
   }
 })
