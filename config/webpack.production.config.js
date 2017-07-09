@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -11,34 +12,41 @@ module.exports = {
       './src/index.prod.js'
     ],
     vendor: [
+      'classnames',
+      'jsoneditor',
+      'jss',
+      'jss-global',
+      'jss-preset-default',
       'react',
       'react-dom',
       'react-jss',
-      'classnames',
       'react-router',
-      'react-helmet'
+      'react-rte',
+      'superagent'
     ]
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist'),
+    publicPath: "/"
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve('./dist')], {
       root: path.resolve('./'),
-      exclude: ['CNAME'],
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Welcome',
-      template: './src/index.ejs',
-      appMountId: 'root'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Welcome',
+      title: 'Potato',
       template: './src/index.ejs',
       appMountId: 'root',
-      filename: '200.html'
+      favicon: './assets/images/favicon.png'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Potato',
+      template: './src/index.ejs',
+      appMountId: 'root',
+      filename: '200.html',
+      favicon: './assets/images/favicon.png'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin("vendor"),
@@ -50,12 +58,34 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new UglifyJSPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new CopyWebpackPlugin([{
+      from: path.resolve('./assets/static'),
+      to: path.resolve('./dist')
+    }])
   ],
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: "file-loader" }
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader?name=images/[name].[ext]'
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        exclude: /node_modules/,
+        use: [
+          'file-loader?name=assets/fonts/[name].[ext]'
+        ]
+      }
     ]
   },
   devtool: "cheap-module-source-map"

@@ -11,27 +11,48 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist/'),
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Welcome',
+      title: 'Potato',
       template: './src/index.ejs',
-      appMountId: 'root'
+      appMountId: 'root',
+      favicon: './assets/images/favicon.png'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
   ],
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: "file-loader" }
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader?name=images/[name].[ext]'
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        exclude: /node_modules/,
+        use: [
+          'file-loader?name=assets/fonts/[name].[ext]'
+        ]
+      }
     ]
   },
-  devtool: "eval",
+  devtool: "cheap-module-source-map",
   devServer: {
     hot: true,
-    contentBase: path.join("./dist"),
+    contentBase: path.join("./dist/"),
+    publicPath: "/",
     compress: true,
     historyApiFallback: true,
     port: 9000
