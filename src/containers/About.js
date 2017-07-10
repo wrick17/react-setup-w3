@@ -20,11 +20,11 @@ export default class About extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.block}>
-        This is an apple below.... see. nice naa?
+        <Link to="/">home</Link>
+        <h5>This is an apple below.... see. nice naa?</h5>
         <div>
           <img src={appleImage} />
         </div>
-        <Link to="/">home</Link>
       </div>
     );
   }

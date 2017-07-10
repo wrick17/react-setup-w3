@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import injectSheet from 'react-jss';
+import JsonView from 'components/JsonView';
 
 const styles = {
   heading: {
@@ -19,8 +20,9 @@ export default class Home extends React.Component {
     const {classes} = this.props;
     return (
       <div>
-        <h1 className={classes.heading}>You are on the home page</h1>
         <Link to="/about" >about</Link>
+        <h1 className={classes.heading}>You are on the home page</h1>
+        <JsonView />
       </div>
     );
   }

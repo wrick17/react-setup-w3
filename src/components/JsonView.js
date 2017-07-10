@@ -82,7 +82,7 @@ const styles = {
   },
   textArea: {
     flex: '1 1 auto',
-    height: '500px',
+    height: '400px',
     width: '100%',
     fontFamily: 'monospace',
     tabSize: '20px'
