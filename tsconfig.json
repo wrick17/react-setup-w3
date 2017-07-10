@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "target": "es6",
+        "baseUrl": "./",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "images": ["./assets/images"],
+            "fonts": ["./assets/fonts"],
+            "constants": ["./assets/co/constants.js/*"],
+            "containers": ["./src/containers"],
+            "components": ["./src/components"]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
