@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory, Router, Route } from 'react-router';
-import Home from './Home';
-import About from './About';
+import Home from 'containers/Home';
+import About from 'containers/About';
 
 const routes = (
   <Router history={browserHistory} >

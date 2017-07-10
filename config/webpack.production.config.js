@@ -29,7 +29,9 @@ module.exports = {
     alias: {
       images: path.resolve('./assets/images'),
       fonts: path.resolve('./assets/fonts'),
-      constants: path.resolve('./assets/constants/constants.js')
+      constants: path.resolve('./assets/constants/constants.js'),
+      containers: path.resolve('./src/containers'),
+      components: path.resolve('./src/components')
     }
   },
   output: {
