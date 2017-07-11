@@ -8,6 +8,6 @@ const routes = (
     <Route path='/' component={Home} />
     <Route path='/about' component={About} />
   </Router>
-)
+);
 
 export default routes;

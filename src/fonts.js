@@ -1,6 +1,6 @@
-import jss from 'jss'
-import preset from 'jss-preset-default'
-import { colors, variables } from 'constants'
+import jss from 'jss';
+import preset from 'jss-preset-default';
+import { colors, variables } from 'constants';
 
 jss.setup(preset());
 
@@ -37,6 +37,6 @@ const sheet = jss.createStyleSheet({
       background: colors.background
     }
   }
-})
+});
 
 export default sheet;
