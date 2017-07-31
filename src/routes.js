@@ -1,7 +1,10 @@
 import React from 'react';
 import { browserHistory, Router, Route } from 'react-router';
 import Home from 'containers/Home';
-import About from 'containers/About';
+// import About from 'containers/About';
+import Loadable from 'components/Loadable';
+
+const About = Loadable(import('containers/About'));
 
 const routes = (
   <Router history={browserHistory} >

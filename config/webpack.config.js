@@ -1,6 +1,7 @@
-const path = require("path")
-const webpack = require("webpack")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -29,6 +30,11 @@ module.exports = {
       template: "./src/index.ejs",
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
+    }),
+    new workboxPlugin({
+      globDirectory: path.resolve('dist'),
+      globPatterns: ['**/*.{html,js}'],
+      swDest : path.join(path.resolve('dist'), 'sw.js')
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
@@ -72,4 +78,4 @@ module.exports = {
     historyApiFallback: true,
     port: 9000,
   },
-}
+};

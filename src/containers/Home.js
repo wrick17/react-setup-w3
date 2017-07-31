@@ -1,4 +1,5 @@
 import React from 'react';
+// import Loadable from 'components/Loadable';
 import { Link } from 'react-router';
 import injectSheet from 'react-jss';
 import JsonView from 'components/JsonView';
@@ -9,6 +10,8 @@ const styles = {
     color: 'red'
   }
 };
+
+// const JsonView = Loadable(import('components/JsonView'));
 
 @injectSheet(styles) // do this, else the styles won't come... very important
 export default class Home extends React.Component {

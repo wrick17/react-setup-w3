@@ -7,6 +7,9 @@ import injectSheet from 'react-jss';
 const styles = {
   block: {
     color: 'blue'
+  },
+  img: {
+    width: '100%'
   }
 };
 
@@ -23,7 +26,7 @@ export default class About extends React.Component {
         <Link to="/">home</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
         <div>
-          <img src={appleImage} />
+          <img className={classes.img} src={appleImage} />
         </div>
       </div>
     );

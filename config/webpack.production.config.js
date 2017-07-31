@@ -5,6 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,7 +14,6 @@ module.exports = {
     ],
     vendor: [
       'classnames',
-      'jsoneditor',
       'jss',
       'jss-global',
       'jss-preset-default',
@@ -21,8 +21,7 @@ module.exports = {
       'react-dom',
       'react-jss',
       'react-router',
-      'react-rte',
-      'superagent'
+      // 'react-loadable'
     ]
   },
   resolve: {
@@ -63,6 +62,11 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
+    }),
+    new workboxPlugin({
+      globDirectory: path.resolve('dist'),
+      globPatterns: ['**/*.{html,js}'],
+      swDest: path.join(path.resolve('dist'), 'sw.js')
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new UglifyJSPlugin(),

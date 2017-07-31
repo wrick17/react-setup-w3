@@ -1,6 +1,5 @@
 import React from 'react';
 import routes from './routes';
-import Helmet from 'react-helmet';
 import sheet from './fonts';
 import injectSheet from 'react-jss';
 
