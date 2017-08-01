@@ -1,8 +1,8 @@
 import React from 'react';
-// import Loadable from 'components/Loadable';
-import { Link } from 'react-router';
+import Loadable from 'components/Loadable';
+import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
-import JsonView from 'components/JsonView';
+// import JsonView from 'components/JsonView';
 
 const styles = {
   heading: {
@@ -11,7 +11,7 @@ const styles = {
   }
 };
 
-// const JsonView = Loadable(import('components/JsonView'));
+const JsonView = Loadable({loader: () => import('components/JsonView')});
 
 @injectSheet(styles) // do this, else the styles won't come... very important
 export default class Home extends React.Component {
@@ -25,7 +25,7 @@ export default class Home extends React.Component {
       <div>
         <Link to="/about" >about</Link>
         <h1 className={classes.heading}>You are on the home page</h1>
-        <JsonView />
+         <JsonView /> 
       </div>
     );
   }

@@ -20,8 +20,8 @@ module.exports = {
       'react',
       'react-dom',
       'react-jss',
-      'react-router',
-      // 'react-loadable'
+      'react-router-dom',
+      'react-loadable'
     ]
   },
   resolve: {
