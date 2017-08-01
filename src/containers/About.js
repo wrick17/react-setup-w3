@@ -1,12 +1,15 @@
 import React from 'react';
 const appleImage = require('images/apple.jpg');
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
 
 const styles = {
   block: {
     color: 'blue'
+  },
+  img: {
+    width: '100%'
   }
 };
 
@@ -22,8 +25,9 @@ export default class About extends React.Component {
       <div className={classes.block}>
         <Link to="/">home</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
+        <Link to="/dummy">dummy</Link>
         <div>
-          <img src={appleImage} />
+          <img className={classes.img} src={appleImage} />
         </div>
       </div>
     );
