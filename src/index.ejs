@@ -8,7 +8,19 @@
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
     <% if (htmlWebpackPlugin.options.appMountId) { %>
-      <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+      <div id="<%= htmlWebpackPlugin.options.appMountId %>">loading</div>
     <% } %>
+     <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('sw.js')
+            .then(function (registration) {
+              // Successful registration
+              console.log('Hooray. Registration successful, scope is:', registration.scope);
+            }).catch(function (err) {
+              // Failed registration, service worker won’t be installed
+              console.log('Whoops. Service worker registration failed, error:', error);
+            });
+        }
+    </script>
   </body>
 </html>

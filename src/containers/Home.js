@@ -1,15 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router';
 import {connect} from 'react-redux';
-import injectSheet from 'react-jss';
 import JsonView from 'components/JsonView';
 import ACTION from 'common/action_constants';
+import Loadable from 'components/Loadable';
+import { Link } from 'react-router-dom';
+import injectSheet from 'react-jss';
+// import JsonView from 'components/JsonView';
+
 const styles = {
   heading: {
     fontWeight: 'bold',
     color: 'red'
   }
 };
+
+// const JsonView = Loadable({loader: () => import('components/JsonView')});
 
 @injectSheet(styles) // do this, else the styles won't come... very important
 class Home extends React.Component {

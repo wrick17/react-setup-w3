@@ -1,14 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
 import ACTION from 'common/action_constants';
 const appleImage = require('images/apple.jpg');
+import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
 
 const styles = {
   block: {
     color: 'blue'
+  },
+  img: {
+    width: '100%'
   }
 };
 
@@ -23,6 +26,7 @@ class About extends React.Component {
     return (
       <div className={classes.block}>
         <Link to="/">home</Link>
+        <Link to="/dummy">dummy</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
         {!this.props.about.load &&
         <div>Loading Apple... Please Wait</div>
