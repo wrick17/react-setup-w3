@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import JsonView from 'components/JsonView';
+import ACTION from 'common/action_constants';
 import Loadable from 'components/Loadable';
 import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
@@ -11,10 +14,10 @@ const styles = {
   }
 };
 
-const JsonView = Loadable({loader: () => import('components/JsonView')});
+// const JsonView = Loadable({loader: () => import('components/JsonView')});
 
 @injectSheet(styles) // do this, else the styles won't come... very important
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -25,8 +28,18 @@ export default class Home extends React.Component {
       <div>
         <Link to="/about" >about</Link>
         <h1 className={classes.heading}>You are on the home page</h1>
-         <JsonView /> 
+        {this.props.home.load && <JsonView /> }
       </div>
     );
   }
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch({type:ACTION.HOME.GETHOME});
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    home: state.app.home
+  };
+};
+export default connect(mapStateToProps)(Home);
