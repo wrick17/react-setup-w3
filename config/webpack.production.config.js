@@ -65,7 +65,7 @@ module.exports = {
     }),
     new workboxPlugin({
       globDirectory: path.resolve('dist'),
-      globPatterns: ['**/*.{html,js}'],
+      globPatterns: ['**/*.{html,js,png,svg,jpg,jpeg,ttf,otf,woff,woff2}'],
       swDest: path.join(path.resolve('dist'), 'sw.js')
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
