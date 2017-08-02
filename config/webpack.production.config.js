@@ -21,16 +21,25 @@ module.exports = {
       'react-dom',
       'react-jss',
       'react-router-dom',
-      'react-loadable'
+      'react-loadable',
+      'react-redux',
+      'react-router',
+      'react-router-redux',
+      'redux',
+      'redux-logger',
+      'redux-saga'
     ]
   },
   resolve: {
     alias: {
-      images: path.resolve('./assets/images'),
-      fonts: path.resolve('./assets/fonts'),
-      constants: path.resolve('./assets/constants/constants.js'),
-      containers: path.resolve('./src/containers'),
-      components: path.resolve('./src/components')
+      images: path.resolve("./assets/images"),
+      fonts: path.resolve("./assets/fonts"),
+      constants: path.resolve("./assets/constants/constants.js"),
+      containers: path.resolve("./src/containers"),
+      components: path.resolve("./src/components"),
+      common: path.resolve("./src/common"),
+      reducers: path.resolve("./src/reducers"),
+      sagas: path.resolve("./src/sagas"),
     }
   },
   output: {
