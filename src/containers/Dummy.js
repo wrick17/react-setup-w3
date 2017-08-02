@@ -10,7 +10,7 @@ export default class Dummy extends React.Component {
     return (
       <div>
         <Link to="/">home</Link>
-        <h2>This is a dummy page</h2>
+        <h2>This is a dummy page.</h2>
       </div>
     );
   }

@@ -29,7 +29,7 @@ class About extends React.Component {
         <Link to="/dummy">dummy</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
         {!this.props.about.load &&
-        <div>Loading Apple... Please Wait</div>
+        <div>Loading Apple.... Please Wait</div>
         }
         {this.props.about.load && 
           <div>
@@ -46,7 +46,7 @@ class About extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    about: state.app.about
+    about: state.about
   };
 };
 export default connect(mapStateToProps)(About);
