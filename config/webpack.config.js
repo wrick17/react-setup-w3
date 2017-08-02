@@ -6,7 +6,7 @@ const workboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
   entry: {
     app: [
-      // "react-hot-loader/patch",
+      "react-hot-loader/patch",
       "./src/index.js",
     ],
   },
@@ -34,7 +34,7 @@ module.exports = {
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
     }),
-    // new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // new workboxPlugin({
     //   globDirectory: path.resolve('dist'),
     //   globPatterns: ['**/*.{html,js}'],
