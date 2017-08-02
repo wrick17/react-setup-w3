@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = {
   entry: {
     app: [
-      "react-hot-loader/patch",
+      // "react-hot-loader/patch",
       "./src/index.js",
     ],
   },
@@ -16,6 +16,9 @@ module.exports = {
       constants: path.resolve("./assets/constants/constants.js"),
       containers: path.resolve("./src/containers"),
       components: path.resolve("./src/components"),
+      common: path.resolve("./src/common"),
+      reducers: path.resolve("./src/reducers"),
+      sagas: path.resolve("./src/sagas"),
     },
   },
   output: {
@@ -30,7 +33,7 @@ module.exports = {
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
   ],
   module: {
@@ -39,7 +42,7 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
+        loader: "eslint-loader"
       },
       {
         test: /\.js$/,

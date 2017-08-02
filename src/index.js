@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { AppContainer } from 'react-hot-loader';
 
-if (module.hot) module.hot.accept();
+// if (module.hot) module.hot.accept();
 
 // and react will render the whole stuff into the div with hot module stuff
 ReactDOM.render(
@@ -14,7 +14,7 @@ ReactDOM.render(
 );
 
 // Hot Module Replacement API
-if (module.hot) {
+/*if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default;
     ReactDOM.render(
@@ -24,4 +24,4 @@ if (module.hot) {
       document.getElementById('root')
     );
   });
-}
+}*/

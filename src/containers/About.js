@@ -1,6 +1,8 @@
 import React from 'react';
-const appleImage = require('images/apple.jpg');
+import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import ACTION from 'common/action_constants';
+const appleImage = require('images/apple.jpg');
 
 import injectSheet from 'react-jss';
 
@@ -11,7 +13,7 @@ const styles = {
 };
 
 @injectSheet(styles) // do this, else the styles won't come... very important
-export default class About extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -22,10 +24,25 @@ export default class About extends React.Component {
       <div className={classes.block}>
         <Link to="/">home</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
-        <div>
-          <img src={appleImage} />
-        </div>
+        {!this.props.about.load &&
+        <div>Loading Apple... Please Wait</div>
+        }
+        {this.props.about.load && 
+          <div>
+            <img src={appleImage} />
+          </div>
+        }
       </div>
     );
   }
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch({type:ACTION.ABOUT.GETABOUT});
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    about: state.app.about
+  };
+};
+export default connect(mapStateToProps)(About);
