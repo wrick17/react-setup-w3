@@ -34,7 +34,6 @@ module.exports = {
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
     }),
-    // new webpack.optimize.ModuleConcatenationPlugin(),
     // new workboxPlugin({
     //   globDirectory: path.resolve('dist'),
     //   globPatterns: ['**/*.{html,js}'],
@@ -72,7 +71,7 @@ module.exports = {
       },
     ],
   },
-  devtool: "cheap-module-source-map",
+  devtool: "source-map",
   devServer: {
     hot: true,
     contentBase: path.join("./dist/"),

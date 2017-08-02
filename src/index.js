@@ -42,7 +42,6 @@ if (module.hot) {
   module.hot.accept('./App', () => {
     
     const NextApp = require('./App').default;
-
     ReactDOM.render(
       <Provider store={store}>
         <AppContainer>

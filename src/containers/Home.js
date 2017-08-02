@@ -26,20 +26,21 @@ class Home extends React.Component {
     return (
       <div>
         <Link to="/about" >about</Link>
-        <h1 className={classes.heading}>You are on the home page..</h1>
+        <h1 className={classes.heading}>You are on the home page.</h1>
         {this.props.home.load && <JsonView /> }
       </div>
     );
   }
   componentDidMount() {
     const {dispatch} = this.props;
-    console.log('HOME 4=5');
     dispatch({type:ACTION.HOME.GETHOME});
   }
 }
-const mapStateToProps = (state) => {
+
+const mapStateToProps = state => {
   return {
     home: state.home
   };
 };
+
 export default connect(mapStateToProps)(Home);
