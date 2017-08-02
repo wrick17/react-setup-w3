@@ -34,7 +34,7 @@ module.exports = {
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     // new workboxPlugin({
     //   globDirectory: path.resolve('dist'),
     //   globPatterns: ['**/*.{html,js}'],

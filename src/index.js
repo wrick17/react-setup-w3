@@ -18,21 +18,12 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-// if (module.hot) {
-//   // Enable Webpack hot module replacement for reducers
-//   module.hot.accept('./reducers/root_reducer', () => {
-//     store.replaceReducer(reducers);
-
-//     ReactDOM.render(
-//       <Provider store={store}>
-//         <AppContainer>
-//           <App />
-//         </AppContainer>
-//       </Provider>,
-//       document.getElementById('root')
-//     );
-//   });
-// }
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept('./reducers/root_reducer', () => {
+    store.replaceReducer(reducers);
+  });
+}
 
 sagaMiddleware.run(RootSaga);
 

@@ -26,7 +26,7 @@ class Home extends React.Component {
     return (
       <div>
         <Link to="/about" >about</Link>
-        <h1 className={classes.heading}>You are on the home page</h1>
+        <h1 className={classes.heading}>You are on the home page..</h1>
         {this.props.home.load && <JsonView /> }
       </div>
     );
