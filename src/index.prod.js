@@ -15,7 +15,9 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(RootSaga);
+let sagaTask = sagaMiddleware.run(function* () {
+  yield RootSaga();
+});
 
 // and react will render the whole stuff into the div
 ReactDOM.render(
