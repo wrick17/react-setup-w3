@@ -34,11 +34,11 @@ module.exports = {
       appMountId: "root",
       favicon: "./assets/images/favicon.png",
     }),
-    // new workboxPlugin({
-    //   globDirectory: path.resolve('dist'),
-    //   globPatterns: ['**/*.{html,js,png,svg,jpg,jpeg,ttf,otf,woff,woff2}'],
-    //   swDest : path.join(path.resolve('dist'), 'sw.js')
-    // }),
+    new workboxPlugin({
+      globDirectory: path.resolve('dist'),
+      globPatterns: ['**/*.{html,js,png,svg,jpg,jpeg,ttf,otf,woff,woff2}'],
+      swDest: path.join(path.resolve('dist'), 'sw.js')
+    }),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
   ],
   module: {

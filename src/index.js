@@ -8,6 +8,7 @@ import RootSaga from 'sagas/root_saga';
 import rootReducers from 'reducers/root_reducer';
 import App from './App';
 import { AppContainer } from 'react-hot-loader';
+import logger from 'redux-logger';
 
 if (module.hot) module.hot.accept();
 
@@ -15,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducers,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 let sagaTask = sagaMiddleware.run(function* () {

@@ -23,10 +23,8 @@ module.exports = {
       'react-router-dom',
       'react-loadable',
       'react-redux',
-      'react-router',
       'react-router-redux',
       'redux',
-      'redux-logger',
       'redux-saga'
     ]
   },
