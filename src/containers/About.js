@@ -26,6 +26,7 @@ class About extends React.Component {
     return (
       <div className={classes.block}>
         <Link to="/">home</Link>
+        <h5>To to go to the dummy page click below</h5>
         <Link to="/dummy">dummy</Link>
         <h5>This is an apple below.... see. nice naa?</h5>
         {!this.props.about.load &&
@@ -33,7 +34,7 @@ class About extends React.Component {
         }
         {this.props.about.load && 
           <div>
-            <img src={appleImage} />
+            <img className={classes.img} src={appleImage} />
           </div>
         }
       </div>

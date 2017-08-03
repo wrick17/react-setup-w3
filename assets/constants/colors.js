@@ -1,6 +1,6 @@
 var colors = {
   primary: '#c62828',
-  background: 'wheat',
+  background: '#EEE',
   accent: '#1565c0'
 };
 

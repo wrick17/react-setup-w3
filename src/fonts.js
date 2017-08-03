@@ -31,7 +31,7 @@ const sheet = jss.createStyleSheet({
       outline: 'none !important'
     },
     body: {
-      margin: '0',
+      margin: '10px',
       fontFamily: 'Proxima',
       fontWeight: 'normal',
       background: colors.background
