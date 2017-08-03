@@ -37,7 +37,7 @@ if (module.hot) {
   
   // Enable Webpack hot module replacement for reducers
   module.hot.accept('reducers/root_reducer', () => {
-    store.replaceReducer(require('reducers/root_reducer'));
+    store.replaceReducer(require('reducers/root_reducer').default);
   });
 
   // Enable Webpack hot module replacement for sagas
