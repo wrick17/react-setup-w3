@@ -6,8 +6,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const workboxPlugin = require('workbox-webpack-plugin');
+const common = require('./webpack.common');
+const merge = require('webpack-merge');
 
-module.exports = {
+const prodSpecifics = {
   entry: {
     app: [
       './src/index.prod.js'
@@ -28,53 +30,18 @@ module.exports = {
       'redux-saga'
     ]
   },
-  resolve: {
-    alias: {
-      images: path.resolve("./assets/images"),
-      fonts: path.resolve("./assets/fonts"),
-      constants: path.resolve("./assets/constants/constants.js"),
-      containers: path.resolve("./src/containers"),
-      components: path.resolve("./src/components"),
-      common: path.resolve("./src/common"),
-      reducers: path.resolve("./src/reducers"),
-      sagas: path.resolve("./src/sagas"),
-    }
-  },
-  output: {
-    filename: '[name].[hash].js',
-    path: path.resolve('./dist'),
-    publicPath: "/"
-  },
   plugins: [
-    new CleanWebpackPlugin([path.resolve('./dist')], {
-      root: path.resolve('./'),
-      verbose: true
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Potato',
-      template: './src/index.ejs',
-      appMountId: 'root',
-      favicon: './assets/images/favicon.png'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Potato',
-      template: './src/index.ejs',
-      appMountId: 'root',
-      filename: '200.html',
-      favicon: './assets/images/favicon.png'
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new workboxPlugin({
-      globDirectory: path.resolve('dist'),
-      globPatterns: ['**/*.{html,js,png,svg,jpg,jpeg,ttf,otf,woff,woff2}'],
-      swDest: path.join(path.resolve('dist'), 'sw.js')
+    new CleanWebpackPlugin([path.resolve('./dist')], {
+      root: path.resolve('./'),
+      verbose: true
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new UglifyJSPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
@@ -84,35 +51,10 @@ module.exports = {
       to: path.resolve('./dist')
     }])
   ],
-  module: {
-    rules: [
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader",
-      },
-      {
-        test: /\.js$/,
-        use: [
-          'babel-loader'
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader?name=images/[name].[ext]'
-        ]
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        exclude: /node_modules/,
-        use: [
-          'file-loader?name=assets/fonts/[name].[ext]'
-        ]
-      }
-    ]
-  },
   devtool: "cheap-module-source-map"
 };
+
+
+const productionConfig = merge(common, prodSpecifics);
+
+module.exports = productionConfig;
