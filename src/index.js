@@ -18,36 +18,49 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-if (module.hot) {
-  // Enable Webpack hot module replacement for reducers
-  module.hot.accept('./reducers/root_reducer', () => {
-    store.replaceReducer(reducers);
-  });
-}
-
-sagaMiddleware.run(RootSaga);
+let sagaTask = sagaMiddleware.run(function* () {
+  yield RootSaga();
+});
 
 // and react will render the whole stuff into the div with hot module stuff
 ReactDOM.render(
-  <Provider store={store}>
-    <AppContainer>
+  <AppContainer>
+    <Provider store={store}>
       <App/>
-    </AppContainer>
-  </Provider>,
+    </Provider>
+  </AppContainer>,
   document.getElementById('root')
 );
 
 // Hot Module Replacement API
 if (module.hot) {
+  
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept('reducers/root_reducer', () => {
+    store.replaceReducer(require('reducers/root_reducer'));
+  });
+
+  // Enable Webpack hot module replacement for sagas
+  module.hot.accept('sagas/root_saga', () => {
+    const getNewSagas = require('sagas/root_saga').default;
+    sagaTask.cancel();
+    sagaTask.done.then(() => {
+      sagaTask = sagaMiddleware.run(function* () {
+        yield getNewSagas();
+      });
+    });
+  });
+
+  // Enable Webpack hot module replacement for the app
   module.hot.accept('./App', () => {
     
     const NextApp = require('./App').default;
     ReactDOM.render(
-      <Provider store={store}>
-        <AppContainer>
-          <NextApp/>
-        </AppContainer>,
-      </Provider>,
+      <AppContainer>
+        <Provider store={store}>
+          <NextApp />
+        </Provider>
+      </AppContainer>,
       document.getElementById('root')
     );
 
